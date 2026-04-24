@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SitoOra | Il tuo sito, ora.",
   description: "Agenzia di sviluppo web, creazione e manutenzione siti web. Soluzioni moderne e performanti.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
