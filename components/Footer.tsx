@@ -56,9 +56,8 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Contatti</h3>
             <ul className="space-y-3 text-neutral-400">
-              <li>Via Roma 123, Milano, IT</li>
               <li>info@sitoora.it</li>
-              <li>+39 012 345 6789</li>
+              <li>+39 331 734 9165</li>
             </ul>
           </div>
 

@@ -1,14 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 export default function Contatti() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: "" });
+
   const contatti = [
     { icon: Mail, label: "Email", value: "info@sitoora.it", action: "mailto:info@sitoora.it" },
-    { icon: Phone, label: "Telefono", value: "+39 012 345 6789", action: "tel:+390123456789" },
-    { icon: MapPin, label: "Sede", value: "Milano, Italia", action: "#" },
+    { icon: Phone, label: "Telefono", value: "+39 331 734 9165", action: "tel:+390123456789" },
+    { icon: MapPin, label: "Sede", value: "Roma, Italia", action: "#" },
   ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus({ type: 'success', message: 'Messaggio inviato con successo! Ti risponderemo al più presto.' });
+        setFormData({ name: "", email: "", message: "" }); // Reset form
+      } else {
+        setStatus({ type: 'error', message: data.message || 'Si è verificato un errore durante l\'invio.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Errore di connessione. Riprova più tardi.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
 
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
@@ -72,25 +112,38 @@ export default function Contatti() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <form className="p-8 rounded-3xl bg-neutral-900/40 backdrop-blur-md border border-neutral-800/50 flex flex-col gap-6">
+          <form onSubmit={handleSubmit} className="p-8 rounded-3xl bg-neutral-900/40 backdrop-blur-md border border-neutral-800/50 flex flex-col gap-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-sm font-medium text-neutral-400">Nome</label>
-                <input type="text" id="name" className="px-4 py-3 rounded-xl bg-neutral-950/50 border border-neutral-800 focus:border-blue-500 outline-none text-white transition-colors" placeholder="Mario Rossi" />
+                <input required type="text" id="name" value={formData.name} onChange={handleChange} className="px-4 py-3 rounded-xl bg-neutral-950/50 border border-neutral-800 focus:border-blue-500 outline-none text-white transition-colors" placeholder="Mario Rossi" />
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="email" className="text-sm font-medium text-neutral-400">Email</label>
-                <input type="email" id="email" className="px-4 py-3 rounded-xl bg-neutral-950/50 border border-neutral-800 focus:border-blue-500 outline-none text-white transition-colors" placeholder="mario@email.it" />
+                <input required type="email" id="email" value={formData.email} onChange={handleChange} className="px-4 py-3 rounded-xl bg-neutral-950/50 border border-neutral-800 focus:border-blue-500 outline-none text-white transition-colors" placeholder="mario@email.it" />
               </div>
             </div>
             
             <div className="flex flex-col gap-2">
               <label htmlFor="message" className="text-sm font-medium text-neutral-400">Messaggio</label>
-              <textarea id="message" rows={5} className="px-4 py-3 rounded-xl bg-neutral-950/50 border border-neutral-800 focus:border-blue-500 outline-none text-white transition-colors resize-none" placeholder="Descrivi brevemente il tuo progetto..."></textarea>
+              <textarea required id="message" value={formData.message} onChange={handleChange} rows={5} className="px-4 py-3 rounded-xl bg-neutral-950/50 border border-neutral-800 focus:border-blue-500 outline-none text-white transition-colors resize-none" placeholder="Descrivi brevemente il tuo progetto..."></textarea>
             </div>
 
-            <button type="button" className="w-full py-4 mt-2 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white font-semibold rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] active:scale-95">
-              Invia Messaggio
+            {status.message && (
+              <div className={`p-4 rounded-xl text-sm font-medium ${status.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
+                {status.message}
+              </div>
+            )}
+
+            <button disabled={isSubmitting} type="submit" className="w-full flex justify-center items-center gap-2 py-4 mt-2 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 text-white font-semibold rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] active:scale-95 disabled:opacity-50 disabled:pointer-events-none">
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="animate-spin" size={20} />
+                  Invio in corso...
+                </>
+              ) : (
+                'Invia Messaggio'
+              )}
             </button>
           </form>
         </motion.div>
