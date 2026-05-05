@@ -13,8 +13,9 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/chi-siamo", label: "Chi Siamo" },
-    { href: "/contatti", label: "Contatti" },
+    { href: "/portfolio", label: "Portfolio" },
     { href: "/come-funziona", label: "Come Funziona" },
+    { href: "/contatti", label: "Contatti" },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
