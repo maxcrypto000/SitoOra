@@ -41,7 +41,7 @@ export default function Footer() {
               {[
                 { label: "Home", href: "/" },
                 { label: "Chi Siamo", href: "/chi-siamo" },
-                { label: "Servizi", href: "#" },
+                { label: "Come Funziona", href: "/come-funziona" },
                 { label: "Contatti", href: "/contatti" }
               ].map((link, i) => (
                 <li key={i}>
