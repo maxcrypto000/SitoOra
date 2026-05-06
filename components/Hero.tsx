@@ -138,7 +138,7 @@ export default function Hero() {
         <motion.div 
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-6 left-4 right-4 mx-auto w-max sm:right-auto sm:mx-0 sm:left-8 md:bottom-12 md:-left-12 p-4 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl flex items-center gap-4"
+          className="hidden md:flex absolute md:bottom-12 md:-left-12 p-4 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl items-center gap-4"
         >
           <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
