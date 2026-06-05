@@ -7,6 +7,14 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
+      title: "Mastef NCC",
+      description: "Sito web conn ottimiazionne SEO per serviio NCC",
+      link: "https://mastefnccroma.it/",
+      image: "/mastefNCC.png",
+      type: "Sito Live",
+      isLive: true
+    },
+    {
       title: "Canyoning Italy",
       description: "Sito web per escursioni e avventure all'aperto",
       link: "https://canyoning-italy.com/",
@@ -62,21 +70,21 @@ export default function Portfolio() {
   return (
     <main className="min-h-screen flex flex-col items-center pt-32 pb-20 px-4 relative overflow-hidden">
       {/* Background Animated Glows */}
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/20 blur-[130px] rounded-full mix-blend-screen pointer-events-none" 
+        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/20 blur-[130px] rounded-full mix-blend-screen pointer-events-none"
       />
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           scale: [1, 1.3, 1],
           opacity: [0.2, 0.4, 0.2],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-600/20 blur-[130px] rounded-full mix-blend-screen pointer-events-none" 
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-600/20 blur-[130px] rounded-full mix-blend-screen pointer-events-none"
       />
 
       <motion.div
@@ -115,10 +123,10 @@ export default function Portfolio() {
                   </div>
                   {/* Contenuto Immagine */}
                   <div className="relative flex-1 group-hover:scale-105 transition-transform duration-700">
-                    <Image 
-                      src={project.image!} 
-                      alt={project.title} 
-                      fill 
+                    <Image
+                      src={project.image!}
+                      alt={project.title}
+                      fill
                       className="object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60"></div>
@@ -127,10 +135,10 @@ export default function Portfolio() {
               ) : (
                 // Mostra l'immagine per i mockup
                 <div className="relative w-full h-full group-hover:scale-105 transition-transform duration-700">
-                  <Image 
-                    src={project.image!} 
-                    alt={project.title} 
-                    fill 
+                  <Image
+                    src={project.image!}
+                    alt={project.title}
+                    fill
                     className="object-cover object-top"
                   />
                   {/* Overlay per i mockup */}
@@ -142,11 +150,10 @@ export default function Portfolio() {
             {/* Dettagli Footer */}
             <div className="p-6 flex flex-col flex-1 bg-gradient-to-b from-transparent to-black/40">
               <div className="flex items-center justify-between mb-3">
-                <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${
-                  project.isLive 
-                    ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' 
+                <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${project.isLive
+                    ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
                     : 'bg-violet-500/10 text-violet-400 border-violet-500/20'
-                }`}>
+                  }`}>
                   {project.type}
                 </span>
               </div>
@@ -154,11 +161,11 @@ export default function Portfolio() {
               <p className="text-neutral-400 text-sm mb-6 flex-1">
                 {project.description}
               </p>
-              
+
               {project.isLive && (
-                <a 
-                  href={project.link} 
-                  target="_blank" 
+                <a
+                  href={project.link}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="mt-auto flex items-center justify-center gap-2 w-full py-3 bg-white/5 hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] text-white font-medium rounded-xl border border-white/10 hover:border-transparent transition-all duration-300 active:scale-95"
                 >
