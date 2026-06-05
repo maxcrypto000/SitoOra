@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +10,7 @@ export default function Footer() {
     <footer className="relative mt-20 z-10 border-t border-white/5 bg-black/40 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          
+
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-500">
@@ -21,17 +20,18 @@ export default function Footer() {
             <p className="mt-4 text-neutral-400 max-w-sm">
               Trasformiamo le tue idee in esperienze digitali straordinarie. Il partner tecnologico per la crescita del tuo business online.
             </p>
-            <div className="mt-6 flex space-x-4">
-              {[FaFacebook, FaTwitter, FaInstagram, FaLinkedin].map((Icon, i) => (
-                <motion.a 
-                  key={i}
-                  href="#" 
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-blue-400 hover:border-blue-500/50 transition-colors"
-                >
-                  <Icon size={18} />
-                </motion.a>
-              ))}
+            <div className="mt-8">
+              <a
+                href="https://it.trustpilot.com/review/sitoora.it"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00b67a] hover:bg-[#009e6a] text-white font-medium transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(0,182,122,0.3)]"
+              >
+                <svg viewBox="0 0 512 512" fill="currentColor" className="w-5 h-5">
+                  <path d="M495.8 190.5H307L256 12l-51 178.5H16.2l153 111.4-58.4 179.8L256 374l145.2 107.7-58.4-179.8 153-111.4z" />
+                </svg>
+                Recensiscici su Trustpilot
+              </a>
             </div>
           </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
           <p className="text-neutral-500 text-sm">
             &copy; {currentYear} SitoOra. Tutti i diritti riservati.
