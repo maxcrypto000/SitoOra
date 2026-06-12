@@ -20,7 +20,7 @@ export default function Footer() {
             <p className="mt-4 text-neutral-400 max-w-sm">
               Trasformiamo le tue idee in esperienze digitali straordinarie. Il partner tecnologico per la crescita del tuo business online.
             </p>
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <a
                 href="https://it.trustpilot.com/review/sitoora.it"
                 target="_blank"
@@ -32,7 +32,7 @@ export default function Footer() {
                 </svg>
                 Recensiscici su Trustpilot
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div>
