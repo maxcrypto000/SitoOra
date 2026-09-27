@@ -7,6 +7,14 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
+      title: "Metodo Tour Digitale",
+      description: "Sito web con ottimiazionne SEO per Agenzia di marketing",
+      link: "https://tourdigitale.it/",
+      image: "/MetodoTourDigitale.jpeg",
+      type: "Sito Live",
+      isLive: true
+    },
+    {
       title: "Mastef NCC",
       description: "Sito web conn ottimiazionne SEO per serviio NCC",
       link: "https://mastefnccroma.it/",
@@ -151,8 +159,8 @@ export default function Portfolio() {
             <div className="p-6 flex flex-col flex-1 bg-gradient-to-b from-transparent to-black/40">
               <div className="flex items-center justify-between mb-3">
                 <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${project.isLive
-                    ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
-                    : 'bg-violet-500/10 text-violet-400 border-violet-500/20'
+                  ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                  : 'bg-violet-500/10 text-violet-400 border-violet-500/20'
                   }`}>
                   {project.type}
                 </span>
