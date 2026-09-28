@@ -69,7 +69,7 @@ export default function Footer() {
             &copy; {currentYear} SitoOra. Tutti i diritti riservati.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0 text-sm text-neutral-500">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Termini di Servizio</Link>
           </div>
         </div>
