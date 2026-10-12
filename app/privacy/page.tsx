@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
             Informativa sulla <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-500">Privacy</span>
           </h1>
           <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
-            Ultimo aggiornamento: {new Date().toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}
+            Ultimo aggiornamento: Ottobre 2026
           </p>
         </div>
 
