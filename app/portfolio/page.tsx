@@ -7,8 +7,16 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
+      title: "Mia Personal Trainer Boutique",
+      description: "Sito web per personal trainer con gestione pagamenti e lezioni online integrata",
+      link: "https://miapersonaltrainer.it/",
+      image: "/MiaPersonalTrainer.png",
+      type: "Sito Live",
+      isLive: true
+    },
+    {
       title: "Metodo Tour Digitale",
-      description: "Sito web con ottimiazionne SEO per Agenzia di marketing",
+      description: "Sito web con ottimizzazione SEO per Agenzia di marketing",
       link: "https://tourdigitale.it/",
       image: "/MetodoTourDigitale.jpeg",
       type: "Sito Live",
@@ -16,7 +24,7 @@ export default function Portfolio() {
     },
     {
       title: "Mastef NCC",
-      description: "Sito web conn ottimiazionne SEO per serviio NCC",
+      description: "Sito web conn ottimizzazione SEO per serviio NCC",
       link: "https://mastefnccroma.it/",
       image: "/mastefNCC.png",
       type: "Sito Live",
